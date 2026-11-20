@@ -1,0 +1,910 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#142B49">
+<title>Happy 25th Birthday, Alby ♡</title>
+
+<style>
+:root {
+  --navy:#142B49;
+  --white:#FFFFFF;
+  --blue:#DCEAF5;
+  --muted:#718096;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{
+  margin:0;color:var(--navy);background:white;
+  font-family:Arial,Helvetica,sans-serif;line-height:1.6
+}
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer}
+.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+
+/* NAVBAR */
+nav{
+  position:sticky;top:0;z-index:20;background:#ffffffed;
+  backdrop-filter:blur(12px);border-bottom:1px solid #e9eff5
+}
+.nav-container{
+  height:76px;display:flex;align-items:center;
+  justify-content:space-between
+}
+.brand{font-weight:800;letter-spacing:2px}
+.brand span{color:#91b2d0}
+.navlinks{display:flex;align-items:center;gap:24px;font-size:14px}
+.navlinks a:hover{opacity:.65}
+.nav-song{
+  border:1px solid #d6e3ef;background:var(--blue);
+  color:var(--navy);border-radius:30px;padding:8px 13px;
+  font-size:12px;font-weight:bold
+}
+
+/* HERO */
+.hero{
+  min-height:680px;display:grid;grid-template-columns:1fr 1fr;
+  gap:55px;align-items:center;padding:70px 0
+}
+.eyebrow,.kicker{
+  text-transform:uppercase;letter-spacing:3px;
+  font-size:11px;color:#7893b0;font-weight:bold
+}
+.hero h1{
+  font-size:clamp(55px,8vw,92px);line-height:.95;
+  letter-spacing:-5px;margin:22px 0;color:var(--navy)
+}
+.hero h1 span{color:#8ba9c7}
+.hero p{color:var(--muted);max-width:440px}
+.date{
+  display:inline-block;margin-top:15px;padding:10px 17px;
+  border:1px solid #dce5ee;border-radius:30px;font-size:13px
+}
+.hero-photo{
+  height:480px;background:var(--blue);
+  border-radius:45% 45% 20px 20px;overflow:hidden
+}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+
+/* GENERAL SECTIONS */
+section{padding:95px 0}
+.section-head{max-width:650px;margin-bottom:35px}
+.section-head h2{
+  font-size:clamp(35px,5vw,55px);letter-spacing:-2px;
+  line-height:1.1;margin:12px 0
+}
+.section-head p{color:var(--muted)}
+.memories,.photobox{background:#f7fafd}
+
+/* GALLERY */
+.gallery{columns:3 230px;column-gap:16px}
+.memory{
+  break-inside:avoid;margin:0 0 16px;background:white;
+  border:1px solid #e8eef4;border-radius:16px;overflow:hidden
+}
+.memory img,.memory video{
+  width:100%;display:block;max-height:480px;
+  object-fit:cover;background:var(--blue)
+}
+.memory img{cursor:zoom-in}
+.memory figcaption{padding:12px 14px;font-size:13px;color:#718096}
+
+/* MUSIC SECTION */
+.music-card{
+  background:var(--navy);color:white;border-radius:22px;
+  padding:32px;display:flex;justify-content:space-between;
+  align-items:center;gap:20px
+}
+.music-card p{color:#dceaf5}
+.music-card a{
+  background:white;color:var(--navy);padding:11px 17px;
+  border-radius:30px;font-weight:bold;font-size:13px
+}
+
+/* WISHES */
+.wishes{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.wish{border:1px solid #dce5ee;padding:24px;border-radius:16px}
+.wish p{font-size:14px;color:var(--muted)}
+
+/* LETTER */
+.letter{background:var(--blue)}
+.letter-paper{
+  max-width:760px;margin:auto;background:white;
+  padding:clamp(28px,6vw,60px);border-radius:8px
+}
+.letter-paper h2{font:normal 34px Georgia,serif}
+.letter-paper p{color:#53677d}
+.signature{font:italic 23px Georgia,serif;margin-top:30px}
+
+/* PHOTOBOX */
+.booth-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:25px;align-items:start
+}
+.panel{
+  background:white;border:1px solid #e0e8ef;
+  padding:22px;border-radius:18px
+}
+.panel h3{margin-top:0}
+.frame-options{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+  margin:15px 0
+}
+.frame-choice{
+  border:2px solid #e0e8ef;background:white;
+  border-radius:10px;padding:7px;color:var(--navy)
+}
+.frame-choice.active{border-color:var(--navy);background:var(--blue)}
+.frame-choice img{
+  width:100%;height:110px;object-fit:contain;
+  display:block
+}
+.frame-choice span{font-size:12px;font-weight:bold}
+
+#download {
+  position: relative;
+  z-index: 5;
+  cursor: pointer;
+}
+
+/* CAMERA STAGE */
+.camera-stage{
+  position:relative;
+  width:min(100%,420px);
+  margin:15px auto;
+  aspect-ratio:1002 / 1500;
+  background:var(--blue);
+  overflow:hidden
+}
+
+/* AREA FOTO */
+.photo-slot{
+  position:absolute;
+  overflow:hidden;
+  z-index:2;
+  background:transparent
+}
+.photo-slot video,
+.photo-slot img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover
+}
+.photo-slot video{
+  transform:scaleX(-1)
+}
+
+/* FRAME DI ATAS AREA FOTO */
+#liveFrame{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:fill;
+  z-index:3;
+  pointer-events:none;
+}
+
+/* PESAN KAMERA */
+#cameraMessage{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:20px;
+  color:var(--navy);
+  font-size:14px;
+  z-index:4;
+  pointer-events:none;
+}
+
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+.controls button{
+  border:0;border-radius:30px;padding:11px 16px;
+  background:var(--navy);color:white;font-size:13px
+}
+.controls button.secondary{background:var(--blue);color:var(--navy)}
+.controls button:disabled{opacity:.4;cursor:not-allowed}
+.status{font-size:13px;color:var(--muted);margin-top:12px}
+#shots{
+  display:grid;grid-template-columns:repeat(6,1fr);
+  gap:6px;margin-top:15px
+}
+#shots img{
+  width:100%;aspect-ratio:1;
+  object-fit:cover;border-radius:6px
+}
+#result{
+  width:min(100%,420px);
+  display:block;
+  margin:15px auto;
+  background:#eaf1f7
+}
+#download{margin:auto;display:block}
+
+/* CLOSING */
+.closing{
+  background:var(--navy);color:white;text-align:center;padding:110px 20px
+}
+.closing h2{font-size:clamp(45px,8vw,85px);line-height:1;margin:20px 0}
+.closing p{color:#dceaf5}
+footer{text-align:center;padding:20px;color:#8090a2;font-size:12px}
+
+/* LIGHTBOX */
+.lightbox{
+  display:none;position:fixed;inset:0;background:#071321ed;
+  z-index:50;align-items:center;justify-content:center;padding:20px
+}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:90vh;object-fit:contain}
+.lightbox button{
+  position:absolute;right:20px;top:15px;border:0;
+  border-radius:50%;width:42px;height:42px;font-size:24px
+}
+
+@media(max-width:760px){
+  .nav-container{height:auto;min-height:68px;gap:10px;flex-wrap:wrap;padding:12px 0}
+  .navlinks{gap:12px;font-size:12px}
+  .nav-song{padding:7px 9px;font-size:11px}
+  .hero{grid-template-columns:1fr;gap:25px;padding:45px 0}
+  .hero-photo{height:370px;grid-row:1}
+  .hero-copy{grid-row:2}
+  .hero h1{font-size:65px}
+  section{padding:70px 0}
+  .wishes,.booth-grid{grid-template-columns:1fr}
+  .music-card{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:390px){
+  .navlinks{gap:8px}
+  .navlinks a{font-size:11px}
+  .brand{font-size:12px}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="wrap nav-container">
+    <a class="brand" href="#home">FOR ALBY <span>♡</span></a>
+    <div class="navlinks">
+      <a href="#memories">Memories</a>
+      <a href="#letter">Letter</a>
+      <a href="#photobox">Photobox</a>
+      <button class="nav-song" id="songToggle">▶ Our Song</button>
+    </div>
+  </div>
+</nav>
+
+<audio id="backgroundSong" src="assets/audio/our-song.mp3" loop></audio>
+
+<main>
+<section class="wrap hero" id="home">
+  <div class="hero-copy">
+    <div class="eyebrow">A little page, made with love</div>
+    <h1>Happy<br><span>25th</span><br>Birthday.</h1>
+    <p>For my favorite person, Alby. Semoga hari ini dipenuhi hal-hal baik, tawa, dan semua kebahagiaan yang pantas kamu dapatkan.</p>
+    <div class="date">♡ &nbsp; 21 November 2026</div>
+  </div>
+  <div class="hero-photo">
+    <img src="assets/photos/alby-hero.png" alt="Alby"
+      onerror="this.style.display='none'">
+  </div>
+</section>
+
+<section class="memories" id="memories">
+<div class="wrap">
+  <div class="section-head">
+    <div class="kicker">Little moments</div>
+    <h2>Our memories.</h2>
+    <p>Potongan kecil cerita kita.</p>
+  </div>
+
+  <div class="gallery" id="gallery">
+    <figure class="memory"><img src="assets/photos/memory-01.jpeg" alt="Memory 1" onerror="this.parentElement.style.display='none'"><figcaption>lucu♡</figcaption></figure>
+    <figure class="memory"><img src="assets/photos/memory-02.jpeg" alt="Memory 2" onerror="this.parentElement.style.display='none'"><figcaption>udah 2 tahun lalu ga nyangka</figcaption></figure>
+    <figure class="memory"><img src="assets/photos/memory-03.jpeg" alt="Memory 3" onerror="this.parentElement.style.display='none'"><figcaption>si ganteng gii kelja</figcaption></figure>
+    <figure class="memory"><img src="assets/photos/memory-04.jpeg" alt="Memory 4" onerror="this.parentElement.style.display='none'"><figcaption>another mirror selfie please</figcaption></figure>
+    <figure class="memory"><img src="assets/photos/memory-05.jpeg" alt="Memory 5" onerror="this.parentElement.style.display='none'"><figcaption>gemecc♡</figcaption></figure>
+    <figure class="memory"><img src="assets/photos/memory-06.jpeg" alt="Memory 6" onerror="this.parentElement.style.display='none'"><figcaption>ayo photobox yg banyak</figcaption></figure>
+    <figure class="memory"><img src="assets/photos/memory-07.jpeg" alt="Memory 7" onerror="this.parentElement.style.display='none'"><figcaption>mau ngedate lagi</figcaption></figure>
+    <figure class="memory"><img src="assets/photos/memory-08.jpeg" alt="Memory 8" onerror="this.parentElement.style.display='none'"><figcaption>nonton lagi yukk!!</figcaption></figure>
+    <figure class="memory"><img src="assets/photos/memory-09.jpeg" alt="Memory 9" onerror="this.parentElement.style.display='none'"><figcaption>jodoh ga sih seharunya au deh cedihh</figcaption></figure>
+    <figure class="memory"><img src="assets/photos/memory-10.jpeg" alt="Memory 10" onerror="this.parentElement.style.display='none'"><figcaption>sukaaaa♡</figcaption></figure>
+
+    <figure class="memory"><video controls playsinline preload="metadata"><source src="assets/videos/memory-video-01.mp4" type="video/mp4"></video><figcaption>lucu amay first time photobox, selalu berharap untuk banyak photobox lainnya tapi aku gatau apa harapan itu masih boleh tetap ada. *sedih nangis part123456789 pas buat web ini</figcaption></figure>
+    <figure class="memory"><video controls playsinline preload="metadata"><source src="assets/videos/memory-video-02.mp4" type="video/mp4"></video><figcaption>inget ga pas kamu baca surat dari aku pas ultah ke 23 time flies yaa sekarang kamu ultah ke 25 dan aku gatau apa tahun ini masih tetep aku yg di samping kamu pas kamu ultah, tahun depan mungkin cewe lain yaa yg di samping kamu pas kamu ultah. *suka aku ulang2 pas bagian kamu bilang sini sayangg ngerasa di cintai banget aku</figcaption></figure>
+    <figure class="memory"><video controls playsinline preload="metadata"><source src="assets/videos/memory-video-03.mp4" type="video/mp4"></video><figcaption>kita masih punya kesempatan diy barang2 lucu lagi gaa yaa sambil ketawa2 berdua terus hasilnya jadi pajangan rumah deh</figcaption></figure>
+    <figure class="memory"><video controls playsinline preload="metadata"><source src="assets/videos/memory-video-04.mp4" type="video/mp4"></video><figcaption>selalu suka ikut kamu kerja</figcaption></figure>
+    <figure class="memory"><video controls playsinline preload="metadata"><source src="assets/videos/memory-video-05.mp4" type="video/mp4"></video><figcaption>gemecc lari2 biar ketemu ujung2nya kita cuma dada2 dari jauh momen ini sedih banget sih aku pikir bisa peluk sekali lagi karna kita ga punya kepastian waktu untuk ketemu lagi</figcaption></figure>
+    <figure class="memory"><video controls playsinline preload="metadata"><source src="assets/videos/memory-video-06.mp4" type="video/mp4"></video><figcaption>di momen ini aku ngerasa sedikit mirip sama kamu kan katanya jodoh mirip, yaa tapi jodoh kamu bisa aja cewe lain kan</figcaption></figure>
+  </div>
+</div>
+</section>
+
+<section class="wrap">
+  <div class="music-card">
+    <div>
+      <h3>A song for you.</h3>
+      <p>Lagu yg sekarang sering banget aku dengerin dan inget hubungan kita lagi gimana.</p>
+    </div>
+    <a href="https://open.spotify.com/playlist/1GaAeZLlKqzjddEz8iisku?si=34eab33b22f448fe" target="_blank">Listen on Spotify ↗</a>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="section-head">
+    <div class="kicker">A few wishes</div>
+    <h2>Things I wish for you.</h2>
+    <p>Di umur yang baru ini, semoga banyak hal baik datang ke kamu yaa.</p>
+  </div>
+  <div class="wishes">
+    <article class="wish"><b>01 / HAPPINESS</b><h3>More reasons to smile</h3><p>Semoga kamu selalu punya alasan untuk bahagia, bahkan dari hal-hal sederhana.</p></article>
+    <article class="wish"><b>02 / GROWTH</b><h3>Keep becoming</h3><p>Semoga semua usaha dan mimpi yang sedang kamu perjuangkan perlahan menemukan jalannya.</p></article>
+    <article class="wish"><b>03 / LOVE</b><h3>Always surrounded</h3><p>Semoga kamu selalu dikelilingi orang-orang tulus yang menyayangi dan mendukung kamu.</p></article>
+  </div>
+</section>
+
+<section class="letter" id="letter">
+<div class="wrap">
+  <div class="letter-paper">
+    <div class="kicker">A letter for you</div>
+    <h2>To my babyy,</h2>
+    <p>Happy birthday, sayanggg. Terima kasih sudah hadir dan menjadi bagian dari hari-hari aku selama hampir 4 tahun ini yaa. Aku mungkin nggak selalu bisa menyampaikan semuanya dengan baik, tapi aku harap kamu tau betapa berharganya kamu buat aku.</p>
+<p>Di usia 25 ini, aku berharap kamu selalu diberi kesehatan, ketenangan, kelancaran dalam setiap langkah, dan keberanian untuk mengejar semua yang kamu impikan. Kalau suatu hari rasanya berat, semoga kamu ingat bahwa kamu nggak harus menghadapi semuanya sendirian, kayanya untuk doa-doanya udah yaa nanti yg lengkapnya pas aku sholat aja ada hal lain yg harus aku sampein</p>
+<p>Jujur canggung banget mau panggil-panggil sayangg atau baby makanya dari awal webnya jg kamu kamu mulu yaa kamu taulah yaa hubungan kita lagi gimana, aku gatau harus mulai dari mana untuk sampein isi hati aku ke kamu, sebelumnya aku mau minta maaf yaa kalo perkataan atau perbuatan aku ada yg buat kamu sakit hati</p>
+<p>babyy kamu sebenernya masih mau sama aku atau ngga sih, coba kamu ketuk pintu hati kamu sekali lagi dan tanya ke diri kamu, aku cape babyy ngerasa salah aja terus sama kamu, makin kesini kamu makin dengan mudahnya silent treatment aku, jujur aku orang yg paling gabisa untuk di diemin aku ga kuat loh, dan kamu selalu ngebuat aku ngerasa kecil banget untuk hal-hal kecil yg aku minta sakit babyy</p>
+<p>Kalo emang kamu udah gabisa ada dihubungan ini sama aku jujur aja yaa, jangan ngebuat aku seakan-akan beban yg harus kamu urus, love should be easy kan sayangg, tapi kalo kamu ngerasanya tertekan terus lepasin sayangg, lepasin biar kita ga berakhir sama-sama nyakitin satu sama lain. Kenangan 4 tahun sama kamu tu berharga banget bagi aku, dan aku gamau berakhir jadi orang yg harus benci sama kamu karna gimanapun keadaanya kamu tu adalah rumah dalam bentuk orang yg selalu jadi tempat aku pulang aku ga sanggup kalo harus benci kamu</p>
+<p>Jangan pernah mikir kalo ngeusahain hubungan itu harus selalu dalam bentuk hal-hal besar, mastiin pasangan tidur dalam keadaan nyenyak aja udah termasuk usaha, belajar nurunin ego, nenangin perasaannya itu jg bentuk usaha karna buat ngejaga hubungan bukan cuma bikin pasangan bahagia tapi gimana cara ngejaga hatinya tetap tenang, bahkan Ketika hubungan tu lagi ga baik-baik aja tapi kalo yg kamu lakuin sekarang silent treatment mulu aku gatau harus gimana lagi</p>
+<p>Aku tu ngerasa ada di fase yg aku bahkan gatau harus marah atau sedih, karna aku ga di selingkuhin, ga ditinggal demi orang lain, aku cuma ngerasa ga di perjuangin Ketika hubungan ini mulai butuh keberanian, kalo alesan kamu karna hidup kamu lagi ga baik-baik aja terus gimana dengan aku apa aku lagi di dalam kondisi yg baik-baik aja? pikirin ketuk hati kamu sekali lagi, kamu kan yg datang ke aku ngeyakinin aku di awal, kamu jadi rumah buat aku tapi kenapa sekarang kamu yg ngajarin aku arti kehilangan tempat pulang</p>
+<p>I love you so much and it hurts babyy, maybe im not the girl you'll marry and have a family with, but maybe the girl you'll wonder about 10 years from now, wondering where she is, how she's doaing, and who she became. the girl you'll keep searching for in everyone you meet, until you realize she was the one, and you let her slip away</p>
+<p>sejujurnya, aku gamau akhir kita kaya ini. abis semua yang pernah kita lalui, rasanya masih ada begitu banyak hal yang belum sempat kita selesaikan bereng-bareng. ada banyak cerita yang belum sempat kita tuliskan, banyak tempat yang belum sempat kita datengin, dan banyak kebahagiaan yang dulu aku bayangkan pasti kita jalanin berdua. tapi kenyataannya kita ke arah yang beda. jauh di dalam hati, aku masih berharap kita punya kesempatan.</P>
+<p>nangis part123456789 pas buat web ini, aku gatau ini bakalan jadi hal terakhir yg aku buat untuk kamu atau tahun-tahun selanjutnya selalu ada kesempatan, setelah kirim link web ini dan kamu baca semuanya dan kamu tetep read aja pesan aku dan ngga mencoba menghubungi aku lagi, aku izin pamit yaa babyy, aku minta maaf untuk semua salah aku ke kamu dan makasi banyak untuk semuanya dan untuk pelukan hangat yg selau aku dapetin dari kamu, I love you so much kamu tau kan, tapi kalo setelah ini kamu bales chat aku nanti kita bicarain lagi</p>
+<p>maap kalo typo-typo lagi nyawit yg buat</p>
+<div class="signature">Still with all my love, ♡</div>
+  </div>
+</div>
+</section>
+
+<section class="photobox" id="photobox">
+<div class="wrap">
+  <div class="section-head">
+    <div class="kicker">Let's make a memory</div>
+    <h2>Birthday photobox.</h2>
+    <p>Pilih framenya dulu yaaa ada 3 loh babyy semuanya aku edit sendiri, nyalain kamera, terus take enam foto yg lucu dan ganteng yaa.</p>
+  </div>
+
+  <div class="booth-grid">
+    <div class="panel">
+      <h3>Choose your frame</h3>
+      <div class="frame-options">
+        <button class="frame-choice" data-frame="1">
+          <img src="assets/frames/frame-1.png" alt="Frame 1">
+          <span>gataulah tiba-tiba spiderman soalnya aku sempet mau nanya apa kartun favorite kamu tapi keburu renggang</span>
+        </button>
+        <button class="frame-choice" data-frame="2">
+          <img src="assets/frames/frame-2.png" alt="Frame 2">
+          <span>aku buatin nih si MU MU kamu itu, glory glory man united</span>
+        </button>
+        <button class="frame-choice" data-frame="3">
+          <img src="assets/frames/frame-3.png" alt="Frame 3">
+          <span>yg ini ada muka aku lagi yaa, kalo mau ganti cewe infoin aja gan</span>
+        </button>
+      </div>
+
+      <h3>Camera</h3>
+      <div class="camera-stage" id="cameraStage">
+        <div class="photo-slot" id="slot-0"></div>
+        <div class="photo-slot" id="slot-1"></div>
+        <div class="photo-slot" id="slot-2"></div>
+        <div class="photo-slot" id="slot-3"></div>
+        <div class="photo-slot" id="slot-4"></div>
+        <div class="photo-slot" id="slot-5"></div>
+
+        <img id="liveFrame" src="assets/frames/frame-1.png" alt="Selected frame">
+
+        <div id="cameraMessage">
+          Pilih frame, lalu tekan Start Camera.
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="startCamera">Start Camera</button>
+        <button id="takePhoto" disabled>Take Photo</button>
+        <button id="retake" class="secondary" disabled>Retake All</button>
+      </div>
+      <div class="status" id="status">Belum ada foto diambil.</div>
+      <div id="shots"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Your photostrip</h3>
+      <p style="font-size:13px;color:#718096">Preview hasil akhir sebelum diunduh.</p>
+      <canvas id="result" width="1002" height="1500"></canvas>
+      <button id="download" disabled>Download Photobox PNG</button>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="closing">
+  <div class="kicker">To another year of you</div>
+  <h2>Love you,<br>babyy.</h2>
+  <p>Happy 25th birthday, Alby. Here's to everything beautiful ahead. ♡</p>
+</section>
+</main>
+
+<footer>Made with love, just for you. © 2026</footer>
+
+<div class="lightbox" id="lightbox">
+  <button id="closeLightbox">×</button>
+  <img id="lightboxImage" alt="Memory enlarged">
+</div>
+
+<script>
+/* MUSIC */
+const song = document.getElementById('backgroundSong');
+const songButton = document.getElementById('songToggle');
+
+songButton.addEventListener('click', async () => {
+  try {
+    if (song.paused) {
+      await song.play();
+      songButton.textContent = 'Ⅱ Pause Song';
+    } else {
+      song.pause();
+      songButton.textContent = '▶ Our Song';
+    }
+  } catch (e) {
+    songButton.textContent = 'Song unavailable';
+  }
+});
+
+/* GALLERY LIGHTBOX */
+document.getElementById('gallery').addEventListener('click', e => {
+  if (e.target.tagName === 'IMG') {
+    document.getElementById('lightboxImage').src = e.target.src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+});
+
+document.getElementById('closeLightbox').onclick = () =>
+  document.getElementById('lightbox').classList.remove('open');
+
+document.getElementById('lightbox').onclick = e => {
+  if (e.target.id === 'lightbox') {
+    e.currentTarget.classList.remove('open');
+  }
+};
+
+/* PHOTOBOX */
+const camera = document.createElement('video');
+camera.autoplay = true;
+camera.muted = true;
+camera.playsInline = true;
+
+const cameraStage = document.getElementById('cameraStage');
+const liveFrame = document.getElementById('liveFrame');
+const message = document.getElementById('cameraMessage');
+const result = document.getElementById('result');
+const ctx = result.getContext('2d');
+
+const statusText = document.getElementById('status');
+const takeButton = document.getElementById('takePhoto');
+const retakeButton = document.getElementById('retake');
+const downloadButton = document.getElementById('download');
+const shotsContainer = document.getElementById('shots');
+
+let stream = null;
+let photos = [];
+let selectedFrame = null;
+let currentSlot = 0;
+let frameImage = new Image();
+
+// Sembunyikan liveFrame di awal sebelum frame dipilih
+liveFrame.style.display = 'none';
+message.textContent = 'Pilih frame terlebih dahulu.';
+
+const frameFiles = {
+  1: 'assets/frames/frame-1.png',
+  2: 'assets/frames/frame-2.png',
+  3: 'assets/frames/frame-3.png'
+};
+
+/*
+  Koordinat area foto frame-1.
+  Acuan gambar: 1002 x 1500 piksel.
+  Format: x, y, width, height.
+*/
+const referenceWidth = 1002;
+const referenceHeight = 1500;
+
+const slots = [
+  { x: 80,  y: 167,  w: 311, h: 311 },
+  { x: 598, y: 167,  w: 311, h: 311 },
+  { x: 80,  y: 588,  w: 311, h: 311 },
+  { x: 598, y: 588,  w: 311, h: 311 },
+  { x: 80,  y: 1012, w: 311, h: 312 },
+  { x: 598, y: 1012, w: 311, h: 312 }
+];
+
+const cameraSlots = slots.map((slot, index) =>
+  document.getElementById(`slot-${index}`)
+);
+
+/* KONVERSI KOORDINAT KE UKURAN FRAME */
+function getScaledSlot(slot) {
+  const W = frameImage.naturalWidth;
+  const H = frameImage.naturalHeight;
+
+  return {
+    x: slot.x / referenceWidth * W,
+    y: slot.y / referenceHeight * H,
+    w: slot.w / referenceWidth * W,
+    h: slot.h / referenceHeight * H
+  };
+}
+
+/* POSISI SLOT DI PREVIEW KAMERA */
+function setSlotPositions() {
+  slots.forEach((slot, index) => {
+    const element = cameraSlots[index];
+
+    element.style.left =
+      `${slot.x / referenceWidth * 100}%`;
+
+    element.style.top =
+      `${slot.y / referenceHeight * 100}%`;
+
+    element.style.width =
+      `${slot.w / referenceWidth * 100}%`;
+
+    element.style.height =
+      `${slot.h / referenceHeight * 100}%`;
+  });
+}
+
+/* LOAD FRAME */
+function loadFrame() {
+  if (!selectedFrame) {
+    liveFrame.style.display = 'none';
+    ctx.clearRect(0, 0, result.width, result.height);
+    return;
+  }
+
+  frameImage = new Image();
+
+  frameImage.onload = () => {
+    liveFrame.src = frameFiles[selectedFrame];
+    liveFrame.style.display = 'block';
+
+    const W = frameImage.naturalWidth;
+    const H = frameImage.naturalHeight;
+
+    result.width = W;
+    result.height = H;
+
+    cameraStage.style.aspectRatio = `${W} / ${H}`;
+
+    setSlotPositions();
+    showActiveSlot();
+    drawPreview();
+  };
+
+  frameImage.onerror = () => {
+    statusText.textContent =
+      'Frame tidak ditemukan. Periksa nama file PNG.';
+  };
+
+  frameImage.src = frameFiles[selectedFrame];
+}
+
+/* PILIH FRAME */
+document.querySelectorAll('.frame-choice').forEach(button => {
+  button.addEventListener('click', () => {
+    if (photos.length > 0) {
+      statusText.textContent =
+        'Retake All terlebih dahulu untuk mengganti frame.';
+      return;
+    }
+
+    selectedFrame = Number(button.dataset.frame);
+
+    document.querySelectorAll('.frame-choice').forEach(b => {
+      b.classList.remove('active');
+    });
+
+    button.classList.add('active');
+
+    message.style.display = 'none';
+    statusText.textContent =
+      `Frame ${selectedFrame} dipilih. Tekan Start Camera.`;
+
+    loadFrame();
+  });
+});
+
+/* START CAMERA */
+async function startCamera() {
+  try {
+    if (!selectedFrame) {
+      statusText.textContent = 'Pilih frame dulu sebelum menyalakan kamera.';
+      message.style.display = 'grid';
+      message.textContent = 'Pilih frame terlebih dahulu.';
+      return;
+    }
+
+    if (!navigator.mediaDevices?.getUserMedia) {
+      throw new Error('Kamera membutuhkan HTTPS atau localhost.');
+    }
+
+    if (stream) {
+      stream.getTracks().forEach(track => track.stop());
+    }
+
+    stream = await navigator.mediaDevices.getUserMedia({
+      video: {
+        facingMode: { ideal: 'user' },
+        width: { ideal: 1280 },
+        height: { ideal: 960 }
+      },
+      audio: false
+    });
+
+    camera.srcObject = stream;
+    await camera.play();
+
+    message.style.display = 'none';
+
+    takeButton.disabled = false;
+    retakeButton.disabled = photos.length === 0;
+
+    showActiveSlot();
+
+    statusText.textContent =
+      'Kamera aktif. Ambil foto pertama!';
+
+  } catch (error) {
+    statusText.textContent =
+      'Kamera gagal dibuka. Izinkan akses kamera dan gunakan HTTPS.';
+  }
+}
+
+document.getElementById('startCamera')
+  .addEventListener('click', startCamera);
+
+/* TAMPILKAN FOTO DAN KAMERA DI SLOT */
+function showActiveSlot() {
+  cameraSlots.forEach((element, index) => {
+    element.innerHTML = '';
+
+    if (photos[index]) {
+      const image = document.createElement('img');
+      image.src = photos[index].src;
+      image.alt = `Foto ${index + 1}`;
+      element.appendChild(image);
+    }
+  });
+
+  // Pastikan kamera hanya berada di satu slot aktif
+  if (stream && currentSlot < 6) {
+    const activeEl = cameraSlots[currentSlot];
+    activeEl.innerHTML = '';
+    activeEl.appendChild(camera);
+  }
+}
+
+/* CROP FOTO AGAR MEMENUHI SLOT TANPA DISTORSI */
+function drawCover(target, image, slot) {
+  const scale = Math.max(
+    slot.w / image.width,
+    slot.h / image.height
+  );
+
+  const sw = slot.w / scale;
+  const sh = slot.h / scale;
+
+  const sx = (image.width - sw) / 2;
+  const sy = (image.height - sh) / 2;
+
+  target.drawImage(
+    image,
+    sx, sy, sw, sh,
+    slot.x, slot.y, slot.w, slot.h
+  );
+}
+
+/* GAMBAR HASIL AKHIR */
+function drawPreview() {
+  if (!frameImage.complete || !frameImage.naturalWidth) return;
+
+  const W = frameImage.naturalWidth;
+  const H = frameImage.naturalHeight;
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Gambar foto terlebih dahulu
+  photos.forEach((photo, index) => {
+    if (photo && slots[index]) {
+      drawCover(ctx, photo, getScaledSlot(slots[index]));
+    }
+  });
+
+  // Gambar frame di atas foto agar stiker tetap terlihat
+  ctx.drawImage(frameImage, 0, 0, W, H);
+}
+
+
+/* AMBIL FOTO */
+takeButton.addEventListener('click', () => {
+  if (!stream || currentSlot >= 6) return;
+
+  if (!camera.videoWidth || !camera.videoHeight) {
+    statusText.textContent =
+      'Kamera belum siap. Coba lagi.';
+    return;
+  }
+
+  const shot = document.createElement('canvas');
+  shot.width = 640;
+  shot.height = 640;
+
+  const sctx = shot.getContext('2d');
+
+  const scale = Math.max(
+    640 / camera.videoWidth,
+    640 / camera.videoHeight
+  );
+
+  const sw = 640 / scale;
+  const sh = 640 / scale;
+
+  /* MIRROR KAMERA DEPAN */
+  sctx.translate(640, 0);
+  sctx.scale(-1, 1);
+
+  sctx.drawImage(
+    camera,
+    (camera.videoWidth - sw) / 2,
+    (camera.videoHeight - sh) / 2,
+    sw,
+    sh,
+    0,
+    0,
+    640,
+    640
+  );
+
+  const photo = new Image();
+
+  photo.onload = () => {
+    photos[currentSlot] = photo;
+    currentSlot++;
+
+    drawPreview();
+    renderShots();
+    showActiveSlot();
+
+    retakeButton.disabled = false;
+
+    if (currentSlot === 6) {
+      takeButton.disabled = true;
+      downloadButton.disabled = false;
+
+      statusText.textContent =
+        'Photostrip selesai! Silakan download.';
+    } else {
+      statusText.textContent =
+        `Foto ${currentSlot} dari 6 berhasil diambil.`;
+
+      takeButton.disabled = false;
+    }
+  };
+
+  photo.src = shot.toDataURL('image/jpeg', 0.92);
+});
+
+/* THUMBNAIL FOTO */
+function renderShots() {
+  shotsContainer.innerHTML = '';
+
+  photos.forEach((photo, index) => {
+    const image = document.createElement('img');
+
+    image.src = photo.src;
+    image.alt = `Foto ${index + 1}`;
+
+    shotsContainer.appendChild(image);
+  });
+}
+
+/* RETAKE ALL */
+retakeButton.addEventListener('click', async () => {
+  // Kosongkan seluruh foto
+  photos = [];
+  currentSlot = 0;
+
+  // Kosongkan isi semua slot kamera dulu
+  cameraSlots.forEach(slot => {
+    slot.innerHTML = '';
+  });
+
+  // Hapus seluruh thumbnail
+  shotsContainer.innerHTML = '';
+
+  // Atur ulang tombol
+  takeButton.disabled = !stream;
+  retakeButton.disabled = true;
+  downloadButton.disabled = true;
+
+  // Pastikan frame tetap tampil
+  liveFrame.src = frameFiles[selectedFrame];
+
+  // Kembalikan kamera ke kotak pertama dan pastikan tetap memutar
+  showActiveSlot();
+  if (stream) {
+    try {
+      await camera.play();
+    } catch (e) {}
+  }
+
+  // Gambar ulang preview kosong dengan frame
+  drawPreview();
+
+  statusText.textContent =
+    'Foto dihapus. Silakan ambil ulang dari kotak pertama.';
+});
+
+/* DOWNLOAD PNG */
+downloadButton.addEventListener('click', () => {
+  if (photos.length !== 6 || photos.some(photo => !photo || !photo.complete || !photo.naturalWidth)) {
+    statusText.textContent = 'Ambil 6 foto terlebih dahulu.';
+    return;
+  }
+
+  if (!frameImage.complete || !frameImage.naturalWidth) {
+    statusText.textContent = 'Frame belum selesai dimuat.';
+    return;
+  }
+
+  drawPreview();
+
+  result.toBlob((blob) => {
+    if (!blob) {
+      statusText.textContent = 'Gagal membuat file gambar. Coba lagi.';
+      return;
+    }
+
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+
+    link.href = url;
+    link.download = 'Alby-25th-Birthday-Photobox.png';
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+    statusText.textContent = 'Photobox berhasil diunduh!';
+  }, 'image/png');
+});
+
+/* INISIALISASI */
+loadFrame();
+
+/* HENTIKAN KAMERA SAAT HALAMAN DITUTUP */
+window.addEventListener('beforeunload', () => {
+  if (stream) {
+    stream.getTracks().forEach(track => track.stop());
+  }
+});
+</script>
+
+</body>
+</html>
